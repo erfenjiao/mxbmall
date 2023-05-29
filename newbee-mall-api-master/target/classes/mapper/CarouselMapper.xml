@@ -20,7 +20,7 @@
     <select id="findCarouselList" parameterType="Map" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tb_newbee_mall_carousel
+        from carousel
         where is_deleted = 0
         order by carousel_rank desc
         <if test="start!=null and limit!=null">
@@ -46,7 +46,7 @@
         limit #{number}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tb_newbee_mall_carousel
+    delete from carousel
     where carousel_id = #{carouselId,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="ltd.mxb.mall.entity.Carousel">
@@ -60,7 +60,7 @@
       )
   </insert>
     <insert id="insertSelective" parameterType="ltd.mxb.mall.entity.Carousel">
-        insert into tb_newbee_mall_carousel
+        insert into carousel
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="carouselId != null">
                 carousel_id,
@@ -121,7 +121,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="ltd.mxb.mall.entity.Carousel">
-        update tb_newbee_mall_carousel
+        update carousel
         <set>
             <if test="carouselUrl != null">
                 carousel_url = #{carouselUrl,jdbcType=VARCHAR},
@@ -151,7 +151,7 @@
         where carousel_id = #{carouselId,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="ltd.mxb.mall.entity.Carousel">
-    update tb_newbee_mall_carousel
+    update carousel
     set carousel_url = #{carouselUrl,jdbcType=VARCHAR},
       redirect_url = #{redirectUrl,jdbcType=VARCHAR},
       carousel_rank = #{carouselRank,jdbcType=INTEGER},
@@ -163,7 +163,7 @@
     where carousel_id = #{carouselId,jdbcType=INTEGER}
   </update>
     <update id="deleteBatch">
-        update tb_newbee_mall_carousel
+        update carousel
         set is_deleted=1,update_time=now() where carousel_id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}

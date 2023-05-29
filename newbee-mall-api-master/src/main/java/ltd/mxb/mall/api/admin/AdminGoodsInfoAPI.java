@@ -1,4 +1,3 @@
-
 package ltd.mxb.mall.api.admin;
 
 import io.swagger.annotations.Api;
